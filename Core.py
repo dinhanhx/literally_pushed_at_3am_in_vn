@@ -1,4 +1,5 @@
 from datetime import datetime
+import os
 
 timetable = open("timetable.txt", 'r')
 datelist = timetable.readlines()
@@ -15,6 +16,14 @@ while Found == True:
 	for i in range(len(datelist)):
 		if datelist[i] == currentStr:
 			Found = False;
-			print(datelist[i])
+			data = datetime.now()
+			dataStr = current.strftime("%d %m %Y %H %M")
+			output = open("3am_file.txt", 'w') 
+			output.write(dataStr + " automatically overides this")
+			output.close()
+			os.system('git add .')
+			os.system('git commit -m "Up"')
+			os.system('git push')
+
 
 
